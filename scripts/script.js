@@ -1,15 +1,15 @@
-const containerDiv = document.querySelector('.container');
+const gridContainer = document.querySelector('#grid-container');
+const containerHeight = gridContainer.clientHeight;
 
-// const gridDiv = document.createElement('div');
+console.log(containerHeight);
 
-// gridDiv.classList.add("test");
+function createGrid (rows,columns) {
+    gridContainer.innerHTML = '';
 
-// containerDiv.appendChild(gridDiv);
-
-function createGrid (rows,colums) {
-    for (i = 0; i < (rows * colums); i++){
+    for (i = 0; i < (rows * columns); i++){
         const square = document.createElement('div');
-        square.textContent = (i+1);
-        containerDiv.appendChild(square).className = "test";
+        square.style.width = `${Math.floor(containerHeight / rows)}px`;
+        square.style.height = `${Math.floor(containerHeight / columns)}px`;
+        gridContainer.appendChild(square).className = "squares";
     }
 } 

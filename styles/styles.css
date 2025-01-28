@@ -4,14 +4,25 @@
     box-sizing: border-box;
 }
 
-.container {
+body {
     display: flex;
-    flex-wrap: wrap;
-    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
 }
 
-.test {
+#grid-container{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    /* border: 1px solid red; */
+    background-color: rgb(79, 180, 180);
+    height: 560px;
+    width: 560px;
+}
+
+.squares {
     border: 1px solid blue;
-    height: 10vh;
-    width: 10vh;
 }
