@@ -1,20 +1,23 @@
 const gridContainer = document.querySelector('#container');
-const btn = document.querySelector('button');
+const btnGridChange = document.querySelector('#btn-grid-change');
+const btnCleanUp = document.querySelector('#cleanUp');
 const containerHeight = gridContainer.clientHeight;
-let square;
+let size = 16;
+let square = '';
+
+btnGridChange.addEventListener('click', setGrid);
+btnCleanUp.addEventListener('click', () => createGrid(size));
 
 gridContainer.onmouseover = function(event){
     let target = event.target;
 
-    if (target.tagName != 'DIV') return;
+    if (target.className != 'squares') return;
 
     setColor(target);
 };
 
-btn.addEventListener('click', setGrid);
-
 function setGrid() {
-    let size = prompt('Set a grid size (max 100):');
+    size = prompt('Set a grid size (max 100):');
     size = parseInt(size);
 
     if (size <= 100) {
@@ -43,4 +46,4 @@ function createGrid (size) {
 } 
 
 // set default size
-createGrid(16); 
+createGrid(size); 
