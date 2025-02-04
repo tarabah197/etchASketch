@@ -1,25 +1,24 @@
-const gridContainer = document.querySelector('#grid-container');
+const gridContainer = document.querySelector('#container');
 const containerHeight = gridContainer.clientHeight;
-const rows = 16;
-const columns = 16;
+let size = 16;
+const squareSize = (containerHeight / size);
 let square;
 
-function createGrid () {
+
+
+function createGrid (size) {
     gridContainer.innerHTML = '';
     
-    for (i = 0; i < (rows * columns); i++) {
+    for (i = 0; i < (size * size); i++) {
         square = document.createElement('div');
-        square.style.width = `${Math.floor(containerHeight / rows)}px`;
-        square.style.height = `${Math.floor(containerHeight / columns)}px`;
-        gridContainer.appendChild(square).className = "squares"; 
+        square.classList.add('squares');
+        square.style.width = `${squareSize}px`;
+        square.style.height = `${squareSize}px`;
+        gridContainer.appendChild(square); 
     }
-    // square =  document.querySelectorAll('.squares');
-    // square.forEach(div => {
-    //     div.style.borderColor = 'red';
-    // });
 } 
 
-gridContainer.onmousedown = function(event){
+gridContainer.onmouseover = function(event){
     let target = event.target;
 
     if (target.tagName != 'DIV') return;
@@ -32,7 +31,4 @@ function setColor (targetSquare) {
     square.classList.add('squares-color');
 }
 
-
-
-window.addEventListener('load', createGrid);
-window.addEventListener('resize', createGrid);
+createGrid(16);
