@@ -2,6 +2,8 @@ const gridContainer = document.querySelector('#container');
 const btnGridChange = document.querySelector('#btn-grid-change');
 const btnCleanUp = document.querySelector('#cleanUp');
 const containerHeight = gridContainer.clientHeight;
+const minSize = 1;
+const maxSize = 100;
 let size = 16;
 let square = '';
 
@@ -20,7 +22,7 @@ function setGrid() {
     size = prompt('Set a grid size (max 100):');
     size = parseInt(size);
 
-    if (size <= 100) {
+    if (size >= minSize && size <= maxSize) {
         createGrid(size);
     } else {
         alert('Please enter a number between 1 and 100');
@@ -29,7 +31,14 @@ function setGrid() {
 
 function setColor (targetSquare) {
     square = targetSquare;
-    square.classList.add('squares-color');
+    const red = Math.floor(Math.random() * 256);
+    const green = Math.floor(Math.random() * 256);
+    const blue = Math.floor(Math.random() * 256);
+    let currentBrightness = square.dataset.brightness || 100; //set current brightness data to 100
+    currentBrightness = parseInt(currentBrightness) - 10;
+    square.style.filter = `brightness(${currentBrightness}%)`;
+    square.dataset.brightness = currentBrightness; //restore brightness value
+    square.style.backgroundColor = `rgb(${red},${green},${blue})`;
 }
 
 function createGrid (size) {
@@ -45,5 +54,5 @@ function createGrid (size) {
     }
 } 
 
-// set default size
+// set default grid size
 createGrid(size); 
