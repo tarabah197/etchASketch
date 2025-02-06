@@ -1,15 +1,10 @@
-/* HIDE SCROLLBAR */
-html {
-    overflow: hidden;
-}
-
 body {
     display: flex;
     flex-direction: column;
     align-items: center;
     height: 100vh;
     background-color: rgb(0, 109, 109);
-    margin-top: 0px;
+    margin: 0px;
 }
 
 .btn-container {
